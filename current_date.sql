@@ -1,0 +1,1 @@
+create sysdate from dual;
