@@ -1,0 +1,296 @@
+Connect-AzAccount
+
+
+Search-AzGraph -Query 'policyresources | where type == "microsoft.policyinsights/policystates" | where properties.policyDefinitionAction =~ "deployifnotexists" | where properties.policyAssignmentScope == "/providers/Microsoft.Management/managementGroups/mghydroquebec"| where properties.policyDefinitionReferenceId contains "SQL Server" and properties.policyDefinitionReferenceId contains "Analytics" | project name, properties.policyDefinitionReferenceId, properties.complianceState, properties.policyDefinitionAction, properties | limit 5'
+
+
+Search-AzGraph -Query 'policyresources | where type == "microsoft.policyinsights/policystates" | where properties.policyDefinitionAction =~ "deployifnotexists" | where properties.policyAssignmentScope == "/providers/Microsoft.Management/managementGroups/mghydroquebec"| where properties.policyDefinitionReferenceId contains "SQL Server" and properties.policyDefinitionReferenceId contains "Analytics" | project PolicyReference=properties.policyDefinitionReferenceId, complianceState=properties.complianceState, PolicyAction=properties.policyDefinitionAction, Properties=properties'
+
+
+
+
+{
+  "properties": {
+    "displayName": "App Services should use explicite rules to prevent Allow All access",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy audits any App Service (web app or function app) that does not have an explicite rule configured in Access Restrictions",
+    "metadata": {
+      "createdBy": "67290929-66a7-4f08-91b0-6062b9dc4543",
+      "createdOn": "2021-03-17T22:00:52.4042008Z",
+      "updatedBy": null,
+      "updatedOn": null
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Web/sites"
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Web/sites/config",
+          "existenceCondition": {
+            "not": {
+              "allOf": [{
+                  "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].action",
+                  "equals": "allow"
+                },
+                {
+                  "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].source",
+                  "equals": "any"
+                }
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/providers/Microsoft.Authorization/policyDefinitions/b90ad402-e8cb-475b-bf81-6eb61606dc13",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "b90ad402-e8cb-475b-bf81-6eb61606dc13"
+}
+
+
+
+
+I will try to get an ETA for you.
+Also, we need more information on the affected resources, the SQL server, to continue troubleshooting. Could you please run a collection GET, using REST API?
+I don't know who familiar are you with this process, but here the Microsoft documentation about it:
+Azure REST API reference documentation | Microsoft Docs
+Follow these steps:
+1.	Install PostMan, or any other App of your preference, follow the steps on the document video. Or this doc Azure REST APIs with Postman (2021) | Jon Gallant 
+
+2.	Run a GET request for each SQL server:
+
+https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview
+
+
+https://management.azure.com/subscriptions/bbf3f54a-ae02-4312-aa41-ba5ee9e6aa55/resourceGroups/rgeahdev02/providers/Microsoft.Sql/servers/sqlsrveahdev02/auditingSettings/default?api-version=2017-03-01-preview
+
+http://management.azure.com/subscriptions/bef181f3-8901-42f5-8991-a65c105cf58f/resourceGroups/rgeahtst02/providers/Microsoft.Sql/servers/sqlsrveahtst02/auditingSettings/default?api-version=2017-03-01-preview
+3.	Save the outputs and sent it.
+Regarding, the ticket priority we can move the ticket to Severity B or A, but for Severity A, you need to be available to work on the ticket 24 h, and the case will change the case owner with each shift. Let me know what you prefer.
+
+Best, 
+
+
+
+
+# Log in first with Connect-AzAccount if not using Cloud Shell
+
+$azContext = Get-AzContext
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+$authHeader = @{
+    'Content-Type'='application/json'
+    'Authorization'='Bearer ' + $token.AccessToken
+}
+
+# Invoke the REST API
+$restUri = 'https://management.azure.com/subscriptions/{9081e166-1d33-4f12-96f8-afdf7fc487a8}?api-version=2020-01-01'
+$response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
+
+
+
+
+
+
+        "existenceCondition": {
+          "allOf": [
+            {
+              "field": "Microsoft.Sql/servers/auditingSettings/state",
+              "equals": "enabled"
+            },
+            {
+              "field": "Microsoft.Sql/servers/auditingSettings/isAzureMonitorTargetEnabled",
+              "equals": "true"
+            },
+            {
+                "field": "Microsoft.OperationalInsights/workspaces/linkedServices/resourceId",
+                "equals": "[resourceId()]"
+            },
+            {
+              "field": "Microsoft.OperationalInsights/workspaces/sku.name",
+              "matchInsensitively": "[parameters('logAnalytics')]"
+            }
+          ]
+        }
+
+
+
+
+
+
+==================================================================================================================================
+--With the wrong version
+PS C:\Distros\Ubuntu\rootfs\home\yu5676> Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437?api-version=2020-01-01' -Method Get -Headers $authHeader
+Invoke-RestMethod : {"error":{"code":"NoRegisteredProviderFound","message":"No registered resource provider found for location 'eastus' and API version        
+'2020-01-01' for type 'servers'. The supported api-versions are '2014-01-01, 2014-04-01, 2014-04-01-preview, 2015-05-01-preview, 2017-03-01-preview, 
+2017-10-01-preview, 2018-06-01-preview, 2019-06-01-preview, 2020-02-02-preview, 2020-08-01-preview, 2020-11-01-preview'. The supported locations are 
+'australiacentral, australiaeast, australiasoutheast, brazilsouth, canadacentral, canadaeast, centralindia, centralus, eastasia, eastus, eastus2, 
+francecentral, germanywestcentral, japaneast, japanwest, jioindiawest, koreacentral, koreasouth, northcentralus, northeurope, norwayeast, southafricanorth,    
+southcentralus, southindia, southeastasia, switzerlandnorth, uaenorth, uksouth, ukwest, westcentralus, westeurope, westindia, westus, westus2'."}}
+At line:1 char:1
++ Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/74 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-RestMethod], WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+
+
+
+--the below one works (HQTIC)
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437?api-version=2014-01-01' -Method Get -Headers $authHeader
+
+
+tags       :
+id         : /subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437
+name       : fisec-437
+type       : Microsoft.Sql/servers
+location   : East US
+kind       : v12.0
+properties : @{fullyQualifiedDomainName=fisec-437.database.windows.net; administratorLogin=adm; administratorLoginPassword=; externalAdministratorLogin=;      
+             externalAdministratorSid=; version=12.0; state=Ready}
+			 
+--Same result as the API request is GET by default	but the header $authHeader is required	 
+ Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437?api-version=2014-04-01' -Headers $authHeader
+
+
+
+=================================================================================================================
+
+--Let's check this one
+ Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437/auditingSettings/default?api-version=2017-03-01-preview' -Headers $authHeader
+
+
+https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview
+
+
+
+$restUri = 'https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview'
+$response = Invoke-RestMethod -Uri $restUri -Method Get -Headers $authHeader
+
+
+
+
+
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview' -Method Get -Headers $authHeader
+
+
+
+
+
+
+Invoke-RestMethod : {"error":{"code":"InvalidAuthenticationTokenTenant","message":"The access token is from the wrong issuer 'https://sts.windows.net/2a19afb9-3e81-44a7-a9aa-6dbbef5e9186/'. It must match one of the tenants 
+'https://sts.windows.net/2f4a9838-26b7-47ee-be60-ccc1fdec5953/,https://sts.windows.net/f40a10f0-50ee-4880-9a37-6e1dd4ac2ff3/' associated with this subscription. Please use any authority (URL) from 
+'https://login.windows.net/2f4a9838-26b7-47ee-be60-ccc1fdec5953,https://login.windows.net/f40a10f0-50ee-4880-9a37-6e1dd4ac2ff3' to get the token. Note, if the subscription is transferred to another tenant there is no impact to the        
+services, but information about new tenant could take time to propagate (up to an hour). If you just transferred your subscription and see this error message, please try back later."}}
+At line:1 char:1
++ Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/de ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-RestMethod], WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeRestMethodCommand
+
+
+subscriptionId=
+
+de1a7ef2-b103-441e-92f0-9c70df9d888e (hqprodtic01: MAD)
+
+9081e166-1d33-4f12-96f8-afdf7fc487a8 (hq-ide-lab-01: MDO)
+
+
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/{749b5cd8-5624-49cc-a31b-832a8c6d59a6}?api-version=2020-01-01' -Method Get -Headers $authHeader
+
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437?api-version=2020-01-01' -Method Get -Headers $authHeader
+
+
+
+
+/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourceGroups/NetworkWatcherRG/providers/Microsoft.Sql/servers/fisec-437
+
+
+API REQUESTS
+MDO
+=====
+$azContext = Get-AzContext
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+$authHeader = @{
+    'Content-Type'='application/json'
+    'Authorization'='Bearer ' + $token.AccessToken
+}
+
+
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview' -Method Get -Headers $authHeader
+
+
+/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02
+/subscriptions/bbf3f54a-ae02-4312-aa41-ba5ee9e6aa55/resourcegroups/rgeahdev02/providers/Microsoft.Sql/servers/sqlsrveahdev02
+/subscriptions/bef181f3-8901-42f5-8991-a65c105cf58f/resourcegroups/rgeahtst02/providers/Microsoft.Sql/servers/sqlsrveahtst02
+
+
+PS C:\Distros\Ubuntu\rootfs\home\yu5676> Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/de1a7ef2-b103-441e-92f0-9c70df9d888e/resourcegroups/rgeahprd02/providers/Microsoft.Sql/servers/sqlsrveahprd02/auditingSettings/default?api-version=2017-03-01-preview' -Method Get -Headers $authHeader
+
+properties
+----------
+@{retentionDays=0; auditActionsAndGroups=System.Object[]; isAzureMonitorTargetEnabled=True; state=Enabled; storageEndpoint=; storageAccountSubscriptionId=00000000-0000-0000-…
+
+PS C:\Distros\Ubuntu\rootfs\home\yu5676> Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/bbf3f54a-ae02-4312-aa41-ba5ee9e6aa55/resourcegroups/rgeahdev02/providers/Microsoft.Sql/servers/sqlsrveahdev02/auditingSettings/default?api-version=2017-03-01-preview' -Method Get -Headers $authHeader 
+
+properties
+----------
+@{retentionDays=0; auditActionsAndGroups=System.Object[]; isAzureMonitorTargetEnabled=True; state=Enabled; storageEndpoint=; storageAccountSubscriptionId=00000000-0000-0000-…
+
+PS C:\Distros\Ubuntu\rootfs\home\yu5676> Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/bef181f3-8901-42f5-8991-a65c105cf58f/resourcegroups/rgeahtst02/providers/Microsoft.Sql/servers/sqlsrveahtst02/auditingSettings/default?api-version=2017-03-01-preview' -Method Get -Headers $authHeader
+
+properties
+----------
+@{retentionDays=0; auditActionsAndGroups=System.Object[]; isAzureMonitorTargetEnabled=True; state=Enabled; storageEndpoint=; storageAccountSubscriptionId=00000000-0000-0000-…
+
+PS C:\Distros\Ubuntu\rootfs\home\yu5676>
+
+
+
+Get-AzPolicyAlias | Select-Object -ExpandProperty 'Aliases' | select Name >> PolicyAlias.txt
+
+
+================================================================================================================
+Gets the linked services instances in a workspace
+GET https://management.azure.com/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/linkedServices?api-version=2020-08-01
+
+
+GET https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourcegroups/rg-er-caeast-hub-01/providers/Microsoft.OperationalInsights/workspaces/la-cacentral-01/linkedServices?api-version=2020-08-01
+
+
+#step 1
+Connect-AzAccount
+
+#step 2
+$azContext = Get-AzContext
+$azProfile = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile
+$profileClient = New-Object -TypeName Microsoft.Azure.Commands.ResourceManager.Common.RMProfileClient -ArgumentList ($azProfile)
+$token = $profileClient.AcquireAccessToken($azContext.Subscription.TenantId)
+$authHeader = @{
+    'Content-Type'='application/json'
+    'Authorization'='Bearer ' + $token.AccessToken
+}
+
+#step 3
+Invoke-RestMethod -Uri 'https://management.azure.com/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourcegroups/rg-er-caeast-hub-01/providers/Microsoft.OperationalInsights/workspaces/la-cacentral-01/linkedServices?api-version=2020-08-01' -Method Get -Headers $authHeader
