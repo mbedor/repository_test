@@ -1,0 +1,555 @@
+{
+  "properties": {
+    "displayName": "SQL Server Auditing should be enabled",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy ensure that Azure SQL Auditing is enabled",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Monitoring",
+      "stage": "Beta"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Sql/servers"
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Sql/servers/auditingSettings",
+          "existenceCondition": {
+            "allOf": [{
+                "field": "Microsoft.Sql/servers/auditingSettings/state",
+                "equals": "enabled"
+              },
+              {
+                "field": "Microsoft.Sql/servers/auditingSettings/isAzureMonitorTargetEnabled",
+                "equals": "true"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "sqlServerName": {
+                    "type": "string"
+                  }
+                },
+                "variables": {},
+                "resources": [{
+                  "apiVersion": "2020-11-01-preview",
+                  "type": "Microsoft.Sql/servers/auditingSettings",
+                  "name": "[concat(parameters('sqlServerName'),'/default')]",
+                  "properties": {
+                    "State": "Enabled",
+                    "isAzureMonitorTargetEnabled": true
+                  }
+                }]
+              },
+              "parameters": {
+                "sqlServerName": {
+                  "value": "[field('name')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/providers/Microsoft.Authorization/policyDefinitions/0b7e1443-7532-4a4f-bf06-04fca292f191",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "0b7e1443-7532-4a4f-bf06-04fca292f191"
+}
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+{
+  "properties": {
+    "displayName": "SQL Server Auditing should use default LogAnalyticsWorkspace",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "This policy ensure that the desired Log Analytics Workspace is setup when Azure SQL Auditing is enabled",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "Monitoring",
+      "stage": "Beta"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "DeployIfNotExists",
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists"
+      },
+      "logAnalytics": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Log Analyitcs workspace",
+          "description": "Select the Log Analytics workspace from dropdown list",
+          "strongType": "omsWorkspace"
+        },
+        "allowedValues": [
+          "/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/resourcegroups/rg-er-caeast-hub-01/providers/microsoft.operationalinsights/workspaces/la-cacentral-01",
+          "/subscriptions/f7fb6f38-a821-4b50-8f0f-9b100ec8cbd7/resourcegroups/rgprdsecops01la01/providers/microsoft.operationalinsights/workspaces/logcanadacentralprdsecops01"
+        ],
+        "defaultValue": "/subscriptions/f7fb6f38-a821-4b50-8f0f-9b100ec8cbd7/resourcegroups/rgprdsecops01la01/providers/microsoft.operationalinsights/workspaces/logcanadacentralprdsecops01"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [{
+            "field": "type",
+            "equals": "Microsoft.Sql/servers/databases"
+          },
+          {
+            "field": "name",
+            "equals": "master"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Insights/diagnosticSettings",
+          "name": "SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1",
+          "existenceCondition": {
+            "allOf": [{
+                "count": {
+                  "field": "Microsoft.Insights/diagnosticSettings/logs[*]",
+                  "where": {
+                    "allOf": [{
+                        "field": "Microsoft.Insights/diagnosticSettings/logs[*].category",
+                        "equals": "SQLSecurityAuditEvents"
+                      },
+                      {
+                        "field": "Microsoft.Insights/diagnosticSettings/logs[*].enabled",
+                        "equals": "true"
+                      }
+                    ]
+                  }
+                },
+                "equals": 1
+              },
+              {
+                "field": "Microsoft.Insights/diagnosticSettings/workspaceId",
+                "equals": "[parameters('logAnalytics')]"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "resourceName": {
+                    "type": "string"
+                  },
+                  "logAnalytics": {
+                    "type": "string"
+                  }
+                },
+                "variables": {},
+                "resources": [{
+                  "type": "Microsoft.Sql/servers/databases/providers/diagnosticSettings",
+                  "apiVersion": "2017-05-01-preview",
+                  "name": "[concat(parameters('resourceName'), '/', 'Microsoft.Insights/SQLSecurityAuditEvents_3d229c42-c7e7-4c97-9a99-ec0d0d8b86c1')]",
+                  "properties": {
+                    "workspaceId": "[parameters('logAnalytics')]",
+                    "metrics": [],
+                    "logs": [{
+                      "category": "SQLSecurityAuditEvents",
+                      "enabled": true,
+                      "retentionPolicy": {
+                        "days": 0,
+                        "enabled": false
+                      }
+                    }]
+                  }
+                }],
+                "outputs": {}
+              },
+              "parameters": {
+                "logAnalytics": {
+                  "value": "[parameters('logAnalytics')]"
+                },
+                "resourceName": {
+                  "value": "[field('fullName')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/providers/Microsoft.Authorization/policyDefinitions/0b7e1443-7532-4a4f-bf06-04fca292f191",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "0b7e1443-7532-4a4f-bf06-04fca292f191"
+}
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+{
+    "properties": {
+        "displayName": "Authorize only Private IP and Bluecoat for App Services",
+        "policyType": "Custom",
+        "mode": "All",
+        "description": "This policy audits App Services that have IP addresses in Networking/Access Restrictions other than private IP (10.196.12.0/24) or bluecoat (199.22.57.2/32).",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Network",
+            "stage": "Beta"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the policy"
+                },
+                "allowedValues": [
+                    "AuditIfNotExists",
+                    "DeployIfNotExists",
+                    "Disabled"
+                ],
+                "defaultValue": "AuditIfNotExists"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.Web/sites"
+            },
+            "then": {
+                "effect": "[parameters('effect')]",
+                "details": {
+                    "type": "Microsoft.Web/sites/config",
+                    "roleDefinitionIds": [
+                        "/providers/Microsoft.Authorization/roleDefinitions/de139f84-1756-47ae-9be6-808fbbe84772"
+                    ],
+                    "existenceCondition": {
+                        "not": {
+                            "anyOf": [{
+                                    "count": {
+                                        "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*]"
+                                    },
+                                    "equals": 1
+                                },
+                                {
+                                    "count": {
+                                        "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*]",
+                                        "where": {
+                                            "allOf": [{
+                                                    "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].ipAddress",
+                                                    "notEquals": "199.22.57.2/32"
+                                                },
+                                                {
+                                                    "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].ipAddress",
+                                                    "notEquals": "Any"
+                                                },
+                                                {
+                                                    "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].ipAddress",
+                                                    "notLike": "10.196.12.*"
+                                                },
+                                                {
+                                                    "field": "Microsoft.Web/sites/config/web.ipSecurityRestrictions[*].vnetSubnetResourceId",
+                                                    "notLike": "*"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "greater": 0
+                                }
+                            ]
+                        }
+                    },
+                    "deployment": {
+                        "properties": {
+                            "mode": "incremental",
+                            "parameters": {
+                                "name": {
+                                    "value": "[field('name')]"
+                                }
+                            },
+                            "template": {
+                                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                                "contentVersion": "1.0.0.0",
+                                "parameters": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "resources": [{
+                                    "name": "[concat(parameters('name'), '/web')]",
+                                    "type": "Microsoft.Web/sites/config",
+                                    "apiVersion": "2018-11-01",
+                                    "properties": {
+                                        "scmIpSecurityRestrictionsUseMain": true,
+                                        "ipSecurityRestrictions": [{
+                                                "ipAddress": "199.22.57.2/32",
+                                                "action": "Allow",
+                                                "priority": 100,
+                                                "name": "Bluecoat"
+                                            },
+                                            {
+                                                "ipAddress": "10.196.12.0/24",
+                                                "action": "Allow",
+                                                "priority": 200,
+                                                "name": "Private IP address"
+                                            }
+                                        ]
+                                    }
+                                }]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "id": "/subscriptions/749b5cd8-5624-49cc-a31b-832a8c6d59a6/providers/Microsoft.Authorization/policyDefinitions/b90ad402-e8cb-475b-bf81-6eb61606dc13",
+        "type": "Microsoft.Authorization/policyDefinitions",
+        "name": "b90ad402-e8cb-475b-bf81-6eb61606dc13"
+    }
+}
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+{
+  "properties": {
+    "displayName": "SQL Auditing Settings with ActionGroups Configured",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "The AuditActionsAndGroups property should contain at least SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP, FAILED_DATABASE_AUTHENTICATION_GROUP, BATCH_COMPLETED_GROUP to ensure a thorough audit logging",
+    "metadata": {
+      "version": "1.0.0",
+      "category": "SQL",
+      "stage": "Beta"
+    },
+    "parameters": {
+      "effect": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Effect",
+          "description": "Enable or disable the execution of the policy"
+        },
+        "allowedValues": [
+          "AuditIfNotExists",
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "field": "type",
+        "equals": "Microsoft.Sql/servers"
+      },
+      "then": {
+        "effect": "[parameters('effect')]",
+        "details": {
+          "type": "Microsoft.Sql/servers/auditingSettings",
+          "name": "default",
+          "existenceCondition": {
+            "allOf": [{
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "FAILED_DATABASE_AUTHENTICATION_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "BATCH_COMPLETED_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "BACKUP_RESTORE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_OBJECT_PERMISSION_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_PERMISSION_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_PRINCIPAL_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_PRINCIPAL_IMPERSONATION_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "DATABASE_ROLE_MEMBER_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "SCHEMA_OBJECT_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP"
+                }
+              },
+              {
+                "not": {
+                  "field": "Microsoft.Sql/servers/auditingSettings/auditActionsAndGroups[*]",
+                  "notEquals": "SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP"
+                }
+              }
+            ]
+          },
+
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437",
+            "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
+          ],
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "serverName": {
+                    "type": "string"
+                  }
+                },
+                "variables": {},
+                "resources": [{
+                  "name": "[concat(parameters('serverName'), '/Default')]",
+                  "type": "Microsoft.Sql/servers/auditingSettings",
+                  "apiVersion": "2017-03-01-preview",
+                  "dependsOn": [],
+                  "properties": {
+                    "state": "Enabled",
+                    "auditActionsAndGroups": [
+                      "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+                      "FAILED_DATABASE_AUTHENTICATION_GROUP",
+                      "BATCH_COMPLETED_GROUP",
+                      "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP",
+                      "BACKUP_RESTORE_GROUP",
+                      "DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP",
+                      "DATABASE_OBJECT_PERMISSION_CHANGE_GROUP",
+                      "DATABASE_PERMISSION_CHANGE_GROUP",
+                      "DATABASE_PRINCIPAL_CHANGE_GROUP",
+                      "DATABASE_PRINCIPAL_IMPERSONATION_GROUP",
+                      "DATABASE_ROLE_MEMBER_CHANGE_GROUP",
+                      "SCHEMA_OBJECT_CHANGE_GROUP",
+                      "SCHEMA_OBJECT_OWNERSHIP_CHANGE_GROUP",
+                      "SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP"
+                    ],
+                    "isAzureMonitorTargetEnabled": true
+                  }
+                }]
+              },
+              "parameters": {
+                "serverName": {
+                  "value": "[field('name')]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "id": "/providers/Microsoft.Authorization/policyDefinitions/7ff426e2-515f-405a-91c8-4f2333442eb5",
+  "type": "Microsoft.Authorization/policyDefinitions",
+  "name": "7ff426e2-515f-405a-91c8-4f2333442eb5"
+}
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
