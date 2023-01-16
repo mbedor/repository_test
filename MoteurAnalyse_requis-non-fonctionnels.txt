@@ -1,0 +1,13 @@
+Un moteur d'analyse devrait avoir les exigences non-fonctionnelles suivantes :
+
+Scalabilité : la capacité à gérer des volumes croissants de données et d'utilisateurs sans perte de performance
+Fiabilité : la capacité à fonctionner de manière stable et à minimiser les temps d'arrêt
+Sécurité : la capacité à protéger les données contre les accès non autorisés et les violations de données
+Conformité : la capacité à respecter les réglementations et les normes en vigueur pour la collecte, l'utilisation et la conservation des données
+Performances : la capacité à traiter rapidement les requêtes et à fournir des résultats en temps réel
+Interopérabilité : la capacité à intégrer facilement avec d'autres systèmes et technologies
+Flexibilité : la capacité à s'adapter aux besoins changeants de l'entreprise et à évoluer au fil du temps
+Extensibilité : la capacité à ajouter facilement de nouvelles fonctionnalités et de nouveaux types de données.
+
+
+

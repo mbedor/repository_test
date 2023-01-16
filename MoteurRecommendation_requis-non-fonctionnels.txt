@@ -1,0 +1,12 @@
+Un moteur de recommendation devrait avoir les exigences non-fonctionnelles suivantes :
+
+Performance : la capacité à générer des recommandations rapidement et en temps réel
+Fiabilité : la capacité à générer des recommandations précises et fiables
+Scalabilité : la capacité à gérer un grand nombre d'utilisateurs et de données sans perte de performance
+Sécurité : la capacité à protéger les données utilisateur et les informations de recommandation contre les accès non autorisés
+Conformité : la capacité à respecter les réglementations et les normes en vigueur pour la collecte, l'utilisation et la conservation des données
+Flexibilité : la capacité à s'adapter aux besoins changeants de l'entreprise et à évoluer au fil du temps
+Interopérabilité : la capacité à intégrer facilement avec d'autres systèmes et technologies.
+Personnalisation : La capacité de proposer des recommandations personnalisées en fonction des préférences et des comportements de l'utilisateur.
+Robustesse : La capacité de générer des recommandations même lorsque les données sont incomplètes ou incohérentes.
+Explicabilité : La capacité de fournir une justification ou une raison pour les recommandations générées.

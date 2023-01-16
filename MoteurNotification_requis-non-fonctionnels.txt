@@ -1,0 +1,11 @@
+Un moteur de notification devrait avoir les exigences non-fonctionnelles suivantes :
+
+Disponibilité : la capacité à envoyer des notifications en temps réel et de manière fiable
+Fiabilité : la capacité à garantir que les notifications sont envoyées à tous les utilisateurs cibles et à minimiser les erreurs
+Scalabilité : la capacité à gérer un grand nombre d'utilisateurs et de notifications sans perte de performance
+Sécurité : la capacité à protéger les données des utilisateurs et les informations de notification contre les accès non autorisés
+Conformité : la capacité à respecter les réglementations et les normes en vigueur pour l'envoi de notifications
+Flexibilité : la capacité à s'adapter aux besoins changeants de l'entreprise et à évoluer au fil du temps
+Interopérabilité : la capacité à intégrer facilement avec d'autres systèmes et technologies.
+Haute disponibilité: La capacité de maintenir un haut niveau de disponibilité pour l'envoi de notifications en cas de panne ou de surcharge.
+Fiabilité de la notification : La capacité de garantir que les notifications sont livrées à tous les utilisateurs cibles, même en cas de perturbations réseau.
