@@ -1,0 +1,12 @@
+Un moteur de notification devrait avoir les fonctionnalités suivantes :
+
+Envoi de notifications à des utilisateurs ou groupes d'utilisateurs spécifiques
+Personnalisation des notifications (titre, contenu, icône, etc.)
+Gestion des abonnements et des préférences de notification pour chaque utilisateur
+Possibilité de planifier des notifications à l'avance
+Historique des notifications envoyées
+Support pour différents types de notifications (push, email, SMS, etc.)
+Intégration avec différents systèmes (par exemple, bases de données, calendriers, etc.)
+Possibilité de segmenter les utilisateurs pour envoyer des notifications ciblées
+Mesure de l'engagement des utilisateurs avec les notifications (par exemple, taux de clics)
+Possibilité de tester et de prévisualiser les notifications avant de les envoyer.
