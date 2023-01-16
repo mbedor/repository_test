@@ -14,6 +14,22 @@ Rapports et alertes: une capacité à générer des rapports détaillés et des 
 
 Intégration API: une capacité à intégrer avec d'autres systèmes pour permettre la collecte de données, l'analyse, la visualisation et l'envoi d'alertes.
 
+Prise en charge de plusieurs types de données: une capacité à traiter différents types de données, tels que des données structurées, semi-structurées et non structurées.
+
+Analyse de sentiments: une capacité à détecter et à analyser les sentiments exprimés dans du texte, tels que la reconnaissance de l'émotion, de l'opinion ou de l'intention.
+
+Analyse de la performance: une capacité à utiliser des données de performance pour suivre les indicateurs clés de performance (KPI) et les tendances de l'entreprise.
+
+Analyse prédictive: une capacité à utiliser des techniques d'apprentissage automatique pour prévoir des événements futurs ou des tendances à partir des données historiques.
+
+Analyse de la sécurité: une capacité à détecter les anomalies et les comportements suspects dans les données pour protéger les systèmes et les réseaux contre les attaques.
+
+Analyse en temps réel: une capacité à traiter les données en temps réel pour une prise de décision en temps réel.
+
+Analyse de données geospatiales : une capacité à utiliser des données géographiques pour des analyses liées à la localisation.
+
+Analyse de données de séries temporelles : une capacité à utiliser des données temporelles pour des analyses liées aux tendances temporelles.
+
 
 
 
