@@ -1,0 +1,59 @@
+Requis non fonctionnels pour un environnement de données analytique
+
+En plus des requis fonctionnels, il y a également des requis non fonctionnels importants à prendre en compte pour un environnement de données analytique. Les requis non fonctionnels pour un environnement de données analytique incluent :
+
+Scalabilité : L'environnement doit être capable de gérer de grandes quantités de données et de s'adapter à des besoins évolutifs en termes de volume et de complexité des données.
+
+Disponibilité : L'environnement doit être disponible en tout temps et offrir une haute disponibilité pour les utilisateurs.
+
+Performance : L'environnement doit offrir des performances élevées pour les requêtes et les analyses, en utilisant des techniques telles que l'optimisation des requêtes et la mise en cache des résultats.
+
+Fiabilité : L'environnement doit être fiable et offrir une tolérance aux pannes, notamment en offrant des fonctionnalités de sauvegarde et de restauration.
+
+Sécurité : L'environnement doit être sécurisé, notamment en offrant des fonctionnalités pour la confidentialité, l'intégrité et la disponibilité des données.
+
+Conformité réglementaire : L'environnement doit être conforme aux réglementations en vigueur, telles que la RGPD, la HIPAA, etc.
+
+Intégration avec les outils d'analyse : L'environnement doit être capable de s'intégrer avec des outils d'analyse tiers, tels que des outils de visualisation, de modélisation ou de prévision.
+
+Évolutivité : L'environnement doit être capable de s'adapter aux besoins futurs en matière d'analyse de données et de fournir des fonctionnalités de planification de capacité pour anticiper ces besoins.
+
+Interopérabilité : L'environnement doit être capable d'interagir avec d'autres systèmes et applications, notamment pour l'échange de données et l'intégration avec des outils d'analyse tiers.
+
+Gestion des coûts : L'environnement doit offrir une gestion efficace des coûts, notamment en offrant des fonctionnalités pour la gestion de la capacité, l'optimisation des ressources et la gestion des coûts de stockage et de traitement des données.
+
+
+
+
+
+Les requis non fonctionnels pour un environnement de données analytique dans le cadre de l'expérience employé sont les suivants :
+
+Disponibilité : L'environnement doit être disponible en permanence pour les utilisateurs, avec un temps de réponse rapide pour les requêtes et les analyses.
+
+Fiabilité : L'environnement doit être fiable et stable, avec une tolérance aux pannes pour éviter toute interruption de service.
+
+Performance : L'environnement doit offrir des performances élevées pour l'extraction, la transformation et le chargement des données, ainsi que pour les requêtes et les analyses.
+
+Évolutivité : L'environnement doit être capable de gérer de grandes quantités de données et de s'adapter à des besoins évolutifs en termes de volume et de complexité des données.
+
+Sécurité : L'environnement doit être sécurisé, notamment en offrant des fonctionnalités pour l'authentification, l'autorisation, la gestion des accès et le cryptage des données.
+
+Confidentialité : L'environnement doit garantir la confidentialité des données, en assurant leur protection contre tout accès non autorisé.
+
+Intégrité : L'environnement doit garantir l'intégrité des données, en évitant toute altération ou perte de données.
+
+Cohérence : L'environnement doit garantir la cohérence des données, en s'assurant que les données sont exactes et à jour.
+
+Traçabilité : L'environnement doit offrir des fonctionnalités pour suivre et documenter les changements apportés aux données, pour des raisons de transparence et de conformité.
+
+Gouvernance des données : L'environnement doit offrir des fonctionnalités pour la gouvernance des données, y compris la définition des politiques, la gestion des métadonnées et la surveillance des données.
+
+Interopérabilité : L'environnement doit être capable d'interagir avec d'autres systèmes et applications, notamment pour l'échange de données et l'intégration avec des outils d'analyse tiers.
+
+Convivialité : L'environnement doit être facile à utiliser, avec une interface utilisateur conviviale pour permettre aux utilisateurs de naviguer facilement dans les données et de générer des analyses.
+
+Adaptabilité : L'environnement doit être capable de s'adapter aux besoins des utilisateurs, en offrant des fonctionnalités de personnalisation et de configuration.
+
+Support et maintenance : L'environnement doit être pris en charge par une équipe de support et de maintenance, pour résoudre tout problème technique et garantir la disponibilité continue de l'environnement.
+
+Coûts : L'environnement doit être économique et offrir un retour sur investissement (ROI) significatif pour justifier les coûts associés à la mise en place et à la maintenance de l'environnement.
