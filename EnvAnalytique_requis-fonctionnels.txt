@@ -59,3 +59,75 @@ Recommandations d'amélioration : L'environnement doit offrir des fonctionnalit�
 Tableaux de bord : L'environnement doit permettre de créer des tableaux de bord personnalisés pour aider à visualiser les données et à suivre les indicateurs clés de performance (KPI) liés à l'expérience employé.
 
 Collaboration : L'environnement doit offrir des fonctionnalités pour permettre la collaboration et le partage des données avec les parties prenantes de l'organisation.
+
+
+
+maxbedor@yahoo.fr
+Quels champs devrait-on inclure dans une matrice d'exigences fonctionnelles pour un environnement de données analytique
+
+Une matrice d'exigences fonctionnelles pour un environnement de données analytiques devrait inclure les champs suivants :
+
+Objectifs commerciaux : les objectifs commerciaux pour lesquels le système sera utilisé. Cela peut inclure des objectifs tels que l'analyse des tendances du marché, la surveillance de la concurrence, l'identification des opportunités de croissance, etc.
+
+Sources de données : les sources de données qui seront utilisées pour alimenter le système analytique. Cela peut inclure des bases de données internes, des données de tiers, des données publiques, etc.
+
+Données requises : les données spécifiques requises pour répondre aux objectifs commerciaux énoncés. Cela peut inclure des données telles que les données de vente, les données de marketing, les données financières, les données opérationnelles, etc.
+
+Analyse et rapports : les types d'analyse et de rapports qui seront générés à partir des données. Cela peut inclure des rapports financiers, des tableaux de bord opérationnels, des visualisations de données, des analyses prédictives, etc.
+
+Sécurité et confidentialité : les mesures de sécurité et de confidentialité qui seront mises en place pour protéger les données. Cela peut inclure des politiques de sécurité des données, des contrôles d'accès, des audits de sécurité, etc.
+
+Intégration avec d'autres systèmes : les systèmes avec lesquels le système analytique devra s'intégrer pour fonctionner efficacement. Cela peut inclure des systèmes de gestion des stocks, des systèmes de gestion de la relation client (CRM), des systèmes de planification des ressources de l'entreprise (ERP), etc.
+
+Maintenance et support : les exigences de maintenance et de support pour le système analytique, telles que les mises à jour logicielles, la gestion des erreurs, le support utilisateur, etc.
+
+Performance et évolutivité : les exigences de performance et d'évolutivité pour le système analytique, telles que la capacité à gérer de grandes quantités de données, la vitesse de traitement, la capacité à s'adapter à de nouvelles sources de données, etc.
+
+Coûts : les coûts associés à la mise en place et à la maintenance du système analytique, tels que les coûts de développement, les coûts de maintenance, les coûts de formation des utilisateurs, etc.
+
+En résumé, une matrice d'exigences fonctionnelles pour un environnement de données analytiques devrait inclure des informations sur les objectifs commerciaux, les sources de données, les données requises, l'analyse et les rapports, la sécurité et la confidentialité, l'intégration avec d'autres systèmes, la maintenance et le support, la performance et l'évolutivité, et les coûts.
+
+
+
+
+
+
+
+
+
+
+
+
+Definition
++++++++++++
+Un environnement de données analytiques est un système qui permet de collecter, de stocker et d’analyser des données pour aider les entreprises à prendre des décisions éclairées en fournissant des informations précieuses sur les tendances du marché, les préférences des clients et les performances de l’entreprise1. Les environnements de données analytiques peuvent inclure des fonctionnalités telles que l’extraction de données, la visualisation de données et l’analyse statistique avancée2.
+
+Les environnements de données analytiques sont souvent utilisés pour aider les entreprises à prendre des décisions éclairées en fournissant des informations précieuses sur les tendances du marché, les préférences des clients et les performances de l’entreprise1. Les environnements de données analytiques peuvent également être utilisés pour aider les entreprises à identifier les opportunités d’amélioration et à optimiser leurs processus commerciaux3.
+
+
+Dans le contexte des ressources humaines, un environnement de données analytique est un système qui permet de collecter et d’analyser des données sur les employés et les processus RH pour aider les entreprises à prendre des décisions plus éclairées1. Les départements des ressources humaines peuvent utiliser l’analyse de données pour optimiser les recrutements, comprendre comment retenir les talents dans l’entreprise et permettre à l’ensemble de l’entreprise de se développer2.
+
+
+
+Pour définir les requis d’un environnement analytique de données, il est important de comprendre les besoins de l’entreprise et les objectifs de l’analyse de données1. Les exigences peuvent être définies en termes de données nécessaires pour l’analyse, des outils nécessaires pour effectuer l’analyse et des compétences requises pour effectuer l’analyse2. Il est également important de définir les exigences en matière de stockage et de traitement des données1.
+
+Définir les requis d’un environnement analytique de données peut offrir plusieurs avantages. Cela peut aider à déterminer les besoins en matière de stockage de données et de traitement des données1. Cela peut également aider à déterminer les besoins en matière de sécurité des données2. En outre, cela peut aider à déterminer les besoins en matière de formation et de compétences pour les analystes de données3.
+
+
+
+Objectif
+++++++++
+Les objectifs des requis d’un environnement analytique de données peuvent varier en fonction des besoins de l’entreprise. Cependant, les objectifs courants incluent la démonstration de la qualité du produit analysé, en particulier en termes d’efficacité (fiabilité du dosage) et de sécurité du patient (détectabilité et quantification des impuretés, substances apparentées et produits de dégradation potentiellement toxiques)1. L’apport de l’intelligence des données clients permet d’éclairer les différents partenaires internes sur les actions à poser et les stratégies à adopter afin de mettre le client au centre des objectifs d’affaires de l’entreprise2. Dans un environnement incertain et concurrentiel, développer ses compétences et capacités à formuler une réflexion stratégique est plus que jamais essentiel pour élaborer des business models plus durables et créer de la valeur au sein des organisations3. Il est également important de savoir qui effectue une action sur un élément donné de votre abonné Power BI, afin de permettre à votre entreprise de répondre à ses exigences, notamment en matière de conformité réglementaire et de gestion des enregistrements4.
+
+ 
+Types
+++++++
+Il existe plusieurs types d’environnements analytiques de données. L’analyse des données est une famille de méthodes statistiques dont les principales caractéristiques sont d’être multidimensionnelles et descriptives1. L’analytique descriptive est le niveau d’analyse le plus basique et s’appuie sur les données brutes afin de tirer un bilan des événements passés2. Les différents types d’analytique de données incluent l’analytique descriptive, l’analytique diagnostique, l’analytique prédictive et l’analytique prescriptive3.
+
+Les flux de données analytiques chargent les données dans des types de stockage optimisés pour l’analytique (Azure Data Lake Storage). Les environnements Microsoft Power Platform et les espaces de travail Power BI fournissent aux clients un emplacement de stockage analytique managé qui est fourni avec les licences de ces produits3.
+
+Outils
+++++++
+Les outils d’analytique de données sont des logiciels qui permettent de collecter, de stocker et d’analyser des données. Ils sont utilisés pour aider les entreprises à prendre des décisions éclairées en fournissant des informations précieuses sur les tendances du marché, les préférences des clients et les performances de l’entreprise. Les outils d’analytique de données peuvent inclure des fonctionnalités telles que l’extraction de données, la visualisation de données et l’analyse statistique avancée12.
+
+Certains des outils populaires pour l’analytique de données sont Microsoft Power BI12, QlikView3, Tableau4, Octoparse5 et Mopinion6.
