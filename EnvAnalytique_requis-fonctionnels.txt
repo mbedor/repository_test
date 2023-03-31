@@ -232,7 +232,15 @@ En somme, les requis fonctionnels et non fonctionnels sont tous deux importants 
 
 
 
+2 / 2
 
+Les requis fonctionnels et les requis non fonctionnels sont deux types de requis distincts qui doivent être pris en compte lors de la conception et du développement d'un environnement de données analytiques pour les ressources humaines d'une entreprise.
+
+Les requis fonctionnels définissent les fonctions et les fonctionnalités que l'environnement de données analytiques doit fournir pour répondre aux besoins spécifiques de l'entreprise en matière de ressources humaines. Les requis fonctionnels peuvent inclure des fonctionnalités telles que le suivi des performances des employés, la gestion des congés, la gestion des compétences, la gestion de la rémunération, la planification des effectifs, etc. Ces fonctionnalités doivent être conçues pour répondre aux exigences opérationnelles de l'entreprise en matière de gestion des ressources humaines.
+
+Les requis non fonctionnels, en revanche, définissent les critères de performance et de qualité que l'environnement de données analytiques doit respecter. Les requis non fonctionnels peuvent inclure des exigences en matière de sécurité, de convivialité, de fiabilité, de disponibilité, de performances, de scalabilité, etc. Ces critères sont importants pour s'assurer que l'environnement de données analytiques est fiable et convivial pour les utilisateurs, qu'il répond aux exigences de l'entreprise en termes de sécurité et de performances, et qu'il peut être facilement mis à l'échelle pour répondre aux besoins futurs de l'entreprise.
+
+En somme, les requis fonctionnels définissent ce que l'environnement de données analytiques doit faire, tandis que les requis non fonctionnels définissent comment il doit le faire. Il est donc important de prendre en compte les deux types de requis lors de la conception et du développement d'un environnement de données analytiques pour les ressources humaines d'une entreprise.
 
 
 
