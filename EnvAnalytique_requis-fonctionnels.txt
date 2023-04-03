@@ -243,4 +243,17 @@ Les requis non fonctionnels, en revanche, définissent les critères de performa
 En somme, les requis fonctionnels définissent ce que l'environnement de données analytiques doit faire, tandis que les requis non fonctionnels définissent comment il doit le faire. Il est donc important de prendre en compte les deux types de requis lors de la conception et du développement d'un environnement de données analytiques pour les ressources humaines d'une entreprise.
 
 
+Lorsque l'on définit des exigences fonctionnelles ou non fonctionnelles, on peut choisir différents niveaux de conformité pour indiquer l'importance et l'urgence de l'exigence. Voici quelques exemples de niveaux de conformité possibles :
+
+Critique : L'exigence est essentielle au fonctionnement du système et son non-respect peut entraîner des conséquences graves, telles qu'une interruption de service, une perte de données importante ou des problèmes de sécurité critiques.
+
+Élevé : L'exigence est importante pour le fonctionnement du système et son non-respect peut entraîner des conséquences négatives importantes, telles qu'une réduction de la qualité de service, une perte de données mineure ou des problèmes de sécurité mineurs.
+
+Moyen : L'exigence est utile pour le fonctionnement du système et son non-respect peut entraîner des conséquences négatives limitées, telles qu'une diminution de l'efficacité, une légère perte de données ou des problèmes de sécurité mineurs.
+
+Faible : L'exigence est optionnelle mais souhaitable pour le fonctionnement du système et son non-respect n'entraîne pas de conséquences significatives, mais peut avoir un impact sur l'expérience utilisateur ou la qualité globale du système.
+
+Non critique : L'exigence n'est pas nécessaire pour le fonctionnement du système et son non-respect n'affecte pas le fonctionnement général du système.
+
+Il est important de noter que le niveau de conformité choisi peut varier en fonction des besoins et des priorités spécifiques du projet ou du produit.
 
