@@ -306,3 +306,51 @@ Acteur : Système de feedback utilisateur
 Recevoir les évaluations des utilisateurs sur les recommandations fournies par le moteur de recommandation
 Analyser les évaluations et les commentaires des utilisateurs pour améliorer la qualité des recommandations
 Encore une fois, veuillez noter que cette classification n'est pas exhaustive et peut varier en fonction des besoins spécifiques du moteur de recommandation et du contexte d'utilisation.
+
+
+
+
+
+Quelle recommandation peut etre formulée en fonction de la variation de chacun de ces KPI
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+En fonction de la variation de chacun des KPI, différentes recommandations peuvent être formulées pour améliorer l'expérience employé. Voici quelques exemples :
+
+Taux de rétention : si le taux de rétention est faible, il peut être recommandé de mettre en place des programmes de fidélisation, tels que des programmes de reconnaissance ou de développement professionnel, pour inciter les employés à rester dans l'entreprise.
+
+Taux d'engagement : si le taux d'engagement est faible, il peut être recommandé de mettre en place des initiatives pour améliorer la communication interne, augmenter les opportunités de collaboration ou organiser des événements de team building.
+
+NPS interne : si le NPS interne est faible, il peut être recommandé de mener une enquête pour identifier les problèmes et les préoccupations des employés et de mettre en place des plans d'action pour y remédier.
+
+Taux d'absentéisme : si le taux d'absentéisme est élevé, il peut être recommandé de mener une enquête pour comprendre les raisons de l'absentéisme et mettre en place des initiatives pour améliorer la santé et le bien-être des employés.
+
+Taux de satisfaction : si le taux de satisfaction est faible, il peut être recommandé de mener une enquête pour comprendre les raisons de l'insatisfaction et de mettre en place des plans d'action pour améliorer les pratiques RH et la culture d'entreprise.
+
+Taux de promotion interne : si le taux de promotion interne est faible, il peut être recommandé de mettre en place des programmes de développement professionnel pour aider les employés à acquérir les compétences nécessaires pour progresser dans leur carrière.
+
+Taux d'attrition : si le taux d'attrition est élevé, il peut être recommandé de mener une enquête pour comprendre les raisons du départ des employés et de mettre en place des initiatives pour améliorer la rétention.
+
+En suivant ces recommandations, les entreprises peuvent améliorer l'expérience employé et créer un environnement de travail plus positif et productif pour tous les membres de l'organisation.
+
+
+
+
+
+Temps de formation : si le temps de formation est faible, il peut être recommandé de mettre en place des programmes de formation et de développement professionnel pour aider les employés à acquérir de nouvelles compétences et à progresser dans leur carrière.
+
+Taux de résolution des problèmes : si le taux de résolution des problèmes est faible, il peut être recommandé de mettre en place des procédures plus efficaces pour traiter les préoccupations des employés et pour communiquer plus clairement avec eux.
+
+Taux de participation aux événements : si le taux de participation aux événements est faible, il peut être recommandé de diversifier les événements organisés par l'entreprise pour mieux répondre aux intérêts et aux besoins des employés, et de communiquer plus efficacement sur ces événements.
+
+Taux de charge de travail : si le taux de charge de travail est élevé, il peut être recommandé de réévaluer la répartition des tâches au sein de l'équipe ou de l'entreprise, et d'explorer des solutions pour mieux équilibrer la charge de travail.
+
+Temps moyen de réponse : si le temps moyen de réponse est élevé, il peut être recommandé de mettre en place des procédures plus efficaces pour répondre aux demandes des employés, telles que l'utilisation d'une plateforme de support en ligne ou la mise en place d'un système de ticketing pour suivre les demandes.
+
+Niveau de diversité et d'inclusion : si le niveau de diversité et d'inclusion est faible, il peut être recommandé de mettre en place des initiatives pour recruter une main-d'œuvre plus diverse, pour sensibiliser les employés aux questions de diversité et d'inclusion, et pour établir des pratiques RH plus inclusives.
+
+
+C'est quoi le taux d'attrition et le taux de NPS interne
+
+Le taux d'attrition est le pourcentage d'employés qui ont quitté l'entreprise pendant une période donnée, généralement calculé sur une base annuelle. Le taux d'attrition peut être calculé pour l'ensemble de l'entreprise ou pour des départements spécifiques. Un taux d'attrition élevé peut indiquer un problème de rétention des employés et des coûts élevés liés au recrutement et à la formation de nouveaux employés.
+
+Le NPS interne (Net Promoter Score) est une mesure de la satisfaction et de l'engagement des employés. Il s'agit d'une mesure de la probabilité que les employés recommandent l'entreprise à d'autres personnes en tant que lieu de travail. Les employés sont invités à donner une note sur une échelle de 0 à 10 à la question "Dans quelle mesure recommanderiez-vous notre entreprise en tant que lieu de travail ?". Les scores de 0 à 6 sont considérés comme des promoteurs passifs, les scores de 7 à 8 sont des promoteurs actifs et les scores de 9 à 10 sont des promoteurs enthousiastes. Le score NPS est calculé en soustrayant le pourcentage de promoteurs passifs et de détracteurs du pourcentage de promoteurs enthousiastes. Un score NPS positif indique que les employés sont satisfaits et engagés, tandis qu'un score NPS négatif peut indiquer des problèmes de satisfaction et d'engagement des employés.
