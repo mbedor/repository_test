@@ -423,9 +423,57 @@ Facilité de maintenance : Le moteur de recommandation doit être facile à entr
 
 En respectant ces requis non-fonctionnels, un moteur de recommandation peut offrir une expérience utilisateur satisfaisante et efficace, tout en garantissant des performances optimales et une sécurité des données appropriée.
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+Voici une classification des actions possibles pour un diagramme de cas d'utilisation pour un moteur de recommandation destiné à l'usage des gestionnaires d'équipe pour prendre des décisions avisées pour le bien-être des employés et la bonne marche de l'entreprise :
 
+Actions d'entrée de données : Les utilisateurs peuvent entrer des données sur les employés, telles que leurs compétences, leur expérience, leur formation, leurs performances, leur satisfaction, etc.
+
+Actions de collecte de données : Le moteur de recommandation peut collecter des données sur les employés à partir de différentes sources, telles que des enquêtes, des évaluations de performances, des entretiens, etc.
+
+Actions de traitement de données : Le moteur de recommandation peut traiter les données collectées pour identifier les modèles, les tendances et les relations, en utilisant des algorithmes de recommandation.
+
+Actions de personnalisation : Les utilisateurs peuvent personnaliser les paramètres du moteur de recommandation, tels que les critères de recommandation, les seuils, les poids, etc.
+
+Actions de recommandation : Le moteur de recommandation peut recommander des actions à prendre pour améliorer le bien-être des employés et la bonne marche de l'entreprise, telles que des formations, des promotions, des rotations de postes, des ajustements de salaire, etc.
+
+Actions de suivi : Les utilisateurs peuvent suivre les recommandations et les résultats obtenus, pour évaluer l'efficacité du moteur de recommandation et ajuster les paramètres si nécessaire.
+
+Actions de génération de rapports : Le moteur de recommandation peut générer des rapports pour les gestionnaires d'équipe, pour leur fournir des informations sur les employés, les recommandations, les résultats, etc.
+
+Actions d'administration : Les administrateurs peuvent gérer les utilisateurs, les permissions, les paramètres, les données, les sauvegardes, etc.
+
+En utilisant ces actions dans le diagramme de cas d'utilisation, il est possible de décrire les différents scénarios d'utilisation du moteur de recommandation et de clarifier les interactions entre les utilisateurs et le système.
+
+
+Voici une liste plus exhaustive de la classification des actions possibles par acteur pour un moteur de recommandation destiné à l'usage des gestionnaires d'équipe pour prendre des décisions avisées pour le bien-être des employés et la bonne marche de l'entreprise :
+
+Utilisateur (gestionnaire d'équipe)
+Entrer des données sur les employés (compétences, expérience, formation, performances, satisfaction, etc.)
+Personnaliser les paramètres du moteur de recommandation (critères de recommandation, seuils, poids, etc.)
+Suivre les recommandations et les résultats obtenus
+Consulter les rapports générés par le moteur de recommandation
+Évaluer l'efficacité du moteur de recommandation et ajuster les paramètres si nécessaire
+Rejeter ou ignorer certaines recommandations si nécessaire
+
+Employé
+Fournir des informations sur ses compétences, son expérience, sa formation, ses performances, sa satisfaction, etc.
+Consulter les recommandations concernant sa carrière et son développement professionnel
+Administrateur
+Gérer les utilisateurs et les permissions d'accès
+Administrer les paramètres du moteur de recommandation (critères de recommandation, seuils, poids, etc.)
+Gérer les données collectées et les sauvegardes
+Gérer les rapports générés par le moteur de recommandation
+Assurer la sécurité et la confidentialité des données collectées et des recommandations générées
+
+Système
+Collecter des données sur les employés à partir de différentes sources (enquêtes, évaluations de performances, entretiens, etc.)
+Traiter les données collectées pour identifier les modèles, les tendances et les relations en utilisant des algorithmes de recommandation
+Générer des recommandations pour améliorer le bien-être des employés et la bonne marche de l'entreprise (formations, promotions, rotations de postes, ajustements de salaire, etc.)
+Générer des rapports pour les gestionnaires d'équipe pour leur fournir des informations sur les employés, les recommandations, les résultats, etc.
+Assurer la fiabilité, la performance et la disponibilité du moteur de recommandation
+En utilisant cette liste d'actions par acteur, il est possible de décrire avec plus de précision les interactions entre les différents utilisateurs et le système, et de concevoir un moteur de recommandation plus adapté aux besoins et aux attentes des utilisateurs.
 
 
 
