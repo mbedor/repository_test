@@ -1,5 +1,17 @@
-Requis fonctionnels pour un environnement de données analytique
+En analyse de données, les termes "dimension", "segment" et "mesure" sont souvent utilisés pour décrire différents aspects des données. Voici ce que ces termes signifient :
 
+Dimension : Une dimension est une caractéristique qualitative ou catégorique des données qui peut être utilisée pour segmenter ou grouper les données. Par exemple, dans une base de données de ventes en ligne, les dimensions peuvent inclure le produit, la région, le client ou le temps. Les dimensions permettent de décrire les données et de les organiser en groupes logiques.
+
+Segment : Un segment est un sous-ensemble des données qui est créé en utilisant une ou plusieurs dimensions. Par exemple, si nous segmentons les données de ventes en ligne par produit, nous créons des sous-ensembles de données pour chaque produit vendu. Les segments sont utiles pour identifier les tendances et les comportements dans les données.
+
+Mesure : Une mesure est une valeur quantitative qui est calculée à partir des données. Les mesures sont souvent utilisées pour quantifier les performances ou les résultats. Par exemple, dans une base de données de ventes en ligne, les mesures peuvent inclure le chiffre d'affaires, le nombre de ventes, la marge bénéficiaire ou la durée moyenne des transactions. Les mesures permettent de mesurer les performances des segments et des dimensions.
+
+En résumé, les dimensions décrivent les caractéristiques des données, les segments sont des sous-ensembles de données créés en utilisant une ou plusieurs dimensions, et les mesures sont des valeurs quantitatives calculées à partir des données pour mesurer les performances ou les résultats.
+
+
+
+Requis fonctionnels pour un environnement de données analytique
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Un environnement de données analytique est conçu pour fournir des informations précieuses à partir de données volumineuses et complexes. Les requis fonctionnels pour un environnement de données analytique incluent :
 
 Intégration de données : L'environnement doit être capable d'intégrer des données de sources multiples et hétérogènes (bases de données, fichiers, systèmes externes, etc.) dans un référentiel de données unique.
