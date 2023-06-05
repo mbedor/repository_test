@@ -10,6 +10,24 @@ Azure Data Lake : Azure Data Lake est un service de stockage évolutif conçu sp
 
 En résumé, Azure Data Factory facilite l'orchestration et le transfert de données entre différentes sources et destinations, Azure Databricks offre une plateforme d'analyse de données collaborative basée sur Apache Spark, et Azure Data Lake fournit un service de stockage évolutif pour les données brutes et non structurées. Ces services peuvent être utilisés ensemble pour construire des pipelines de données complexes, de l'extraction à la transformation et à l'analyse des données.
 
+pipeline CI/CD (Continuous Integration/Continuous Deployment)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Un pipeline CI/CD (Continuous Integration/Continuous Deployment) est une approche automatisée de développement et de déploiement logiciel qui vise à assurer la livraison rapide, régulière et fiable des applications ou des systèmes. Il s'agit d'un ensemble d'étapes cohérentes et automatisées qui permettent d'intégrer, de tester, de déployer et de livrer les changements de code de manière continue. Voici comment on pourrait définir un pipeline CI/CD :
+
+1. Intégration continue (CI) : La première étape du pipeline CI/CD est l'intégration continue, qui consiste à intégrer régulièrement les changements de code dans un référentiel centralisé. Cela peut être réalisé en utilisant un système de contrôle de version tel que Git, où les développeurs poussent régulièrement leurs modifications de code vers une branche principale partagée.
+
+2. Build : Après l'intégration des changements de code, la prochaine étape est de créer (build) l'application ou le système. Cette étape comprend la compilation du code source, l'assemblage des dépendances, la création d'artefacts exécutables et la génération de toute autre ressource nécessaire pour le déploiement.
+
+3. Tests automatisés : Une fois le build terminé, des tests automatisés sont exécutés pour vérifier la qualité du code et garantir que les fonctionnalités existantes n'ont pas été compromises. Cela peut inclure des tests unitaires, des tests d'intégration, des tests de performance, des tests de sécurité, etc. Les tests automatisés aident à détecter rapidement les erreurs et à garantir que les nouvelles fonctionnalités ne perturbent pas les fonctionnalités existantes.
+
+4. Déploiement : Une fois les tests automatisés réussis, le déploiement de l'application ou du système est déclenché. Cela peut impliquer la mise en place de l'infrastructure nécessaire, la configuration des serveurs, la gestion des bases de données, l'installation des dépendances, etc. Le déploiement peut être réalisé dans différents environnements tels que le développement, les tests, la pré-production et la production.
+
+5. Tests supplémentaires : Après le déploiement, des tests supplémentaires peuvent être exécutés dans l'environnement cible pour vérifier que l'application fonctionne correctement et répond aux exigences spécifiques de cet environnement. Ces tests peuvent inclure des tests d'acceptation utilisateur, des tests de compatibilité, des tests de charge, des tests de montée en charge, etc.
+
+6. Livraison continue (CD) : Une fois que les tests supplémentaires sont terminés avec succès, la livraison continue consiste à mettre à disposition l'application ou le système dans un état prêt pour la production. Cela peut inclure la publication de l'application sur un serveur, la mise à jour d'un service cloud, la création d'une image de conteneur, etc.
+
+7. Monitoring et feedback : Une fois l'application déployée, il est essentiel de surveiller en continu son fonctionnement et ses performances. Cela permet de détecter rapidement les problèmes potentiels et de recueillir des informations pour améliorer le pipeline CI/CD. Les retours d'information des utilisateurs finaux et des opérations peuvent
+
 
 ***Dans la doc, on va faire un check-list pour les requis avec un niveau de conformité ou un yes/no
 
