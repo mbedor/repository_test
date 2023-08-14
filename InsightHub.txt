@@ -640,4 +640,54 @@ Il est important de peser les avantages et les inconvénients de désactiver le 
 
 
 
+**Analyse d'Impact : Désactivation de la Fonctionnalité de Téléchargement dans Databricks et Data Lake**
+
+**Objectif :** Évaluer les effets potentiels de la désactivation de la fonctionnalité de téléchargement dans Databricks et Data Lake sur les opérations, la collaboration, la sécurité et les processus.
+
+**Parties prenantes concernées :**
+- Utilisateurs de Databricks
+- Équipes d'analyse de données
+- Département IT
+- Équipes de gestion de la sécurité
+- Parties externes recevant des données
+
+**Critères d'Impact :**
+1. **Accès aux données :** Comment la désactivation du téléchargement affectera-t-elle l'accès aux données stockées dans Databricks et le Data Lake ?
+2. **Collaboration :** Quel sera l'impact sur la collaboration entre les équipes qui ont besoin de partager des données pour des analyses et des rapports ?
+3. **Sécurité :** Comment la désactivation du téléchargement contribuera-t-elle à renforcer la sécurité des données et à prévenir les fuites ?
+4. **Productivité :** Comment cela affectera-t-il la productivité des équipes qui ont besoin d'interagir avec les données ?
+5. **Intégration avec d'autres outils :** Comment la désactivation du téléchargement pourrait-elle entraver l'intégration avec d'autres outils d'analyse ou de visualisation ?
+6. **Conformité :** Quels seront les effets sur la capacité à se conformer aux exigences réglementaires et aux audits ?
+7. **Formation des utilisateurs :** Comment la désactivation du téléchargement nécessitera-t-elle une formation et une sensibilisation supplémentaires pour les utilisateurs ?
+
+**Scénarios Évalués :**
+1. Désactivation complète du téléchargement dans Databricks et Data Lake.
+2. Désactivation du téléchargement pour les utilisateurs externes seulement.
+3. Mise en œuvre de contrôles de sécurité plus stricts sans désactiver le téléchargement.
+
+**Impact Évalué :**
+
+| Critère d'Impact       | Scénario 1 | Scénario 2 | Scénario 3 |
+|------------------------|------------|------------|------------|
+| Accès aux données      | Élevé      | Modéré     | Modéré     |
+| Collaboration          | Élevé      | Modéré     | Modéré     |
+| Sécurité               | Élevé      | Élevé      | Élevé      |
+| Productivité           | Élevé      | Modéré     | Modéré     |
+| Intégration avec outils| Élevé      | Modéré     | Modéré     |
+| Conformité             | Modéré     | Modéré     | Élevé      |
+| Formation des utilisateurs | Élevé  | Modéré     | Modéré     |
+
+**Mesures d'Atténuation :**
+- Pour les scénarios 1 et 2, mettre en place un accès contrôlé avec des autorisations spécifiques pour le téléchargement.
+- Pour le scénario 3, renforcer les contrôles d'accès, le chiffrement des données et l'audit des activités.
+
+**Décisions Possibles :**
+- Implémenter le scénario 2 pour désactiver le téléchargement pour les utilisateurs externes uniquement, tout en fournissant des méthodes sécurisées de partage de données.
+- Mettre en œuvre des mesures de sécurité renforcées conformément au scénario 3 tout en maintenant le téléchargement.
+
+**Suivi Continu :**
+Surveiller l'impact réel de la décision mise en œuvre, collecter des commentaires des parties prenantes et ajuster les mesures d'atténuation si nécessaire.
+
+Cette analyse d'impact aidera à éclairer les décisions concernant la désactivation de la fonctionnalité de téléchargement dans Databricks et Data Lake en prenant en compte les implications opérationnelles, la sécurité des données et les besoins des utilisateurs.
+
 
